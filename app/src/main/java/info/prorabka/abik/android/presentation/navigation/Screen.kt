@@ -6,22 +6,18 @@ sealed class Screen(val route: String) {
     data object Register : Screen("register")
     data object ForgotPassword : Screen("forgot_password")
 
-    // Главные вкладки
-    data object TeamsList : Screen("teams_list")
+    // Главные вкладки (Нижнее меню)
+    data object Finance : Screen("finance")
+    data object Schedule : Screen("schedule")
+    data object Team : Screen("team")
     data object Profile : Screen("profile")
-    data object Notifications : Screen("notifications")
 
-    // Вложенные экраны команды
-    data object TeamDetail : Screen("team_detail/{teamId}") {
-        fun createRoute(teamId: Long) = "team_detail/$teamId"
-    }
-    data object TeamCharges : Screen("team_charges/{teamId}") {
-        fun createRoute(teamId: Long) = "team_charges/$teamId"
-    }
-    data object TeamPayments : Screen("team_payments/{teamId}") {
-        fun createRoute(teamId: Long) = "team_payments/$teamId"
-    }
-    data object TeamBalances : Screen("team_balances/{teamId}") {
-        fun createRoute(teamId: Long) = "team_balances/$teamId"
-    }
+    // Экран выбора команды (если нажать на дропдаун в тулбаре)
+    data object TeamSelect : Screen("team_select")
+    data object CreateTeam : Screen("create_team")
+
+    // Вложенные экраны (внутри вкладки Финансы)
+    data object Charges : Screen("charges")
+    data object Payments : Screen("payments")
+    data object Balances : Screen("balances")
 }
